@@ -312,7 +312,12 @@ int printListToFile(FILE* f_print, Person* head){
 }
 
 void cleanMemory(Person* head){
-    Person* toClean; 
+    Person* toClean;
+    
+    if(head -> next != NULL){
+        return;
+    }
+
     while(head != NULL){
         toClean = head;
         head = head ->next;

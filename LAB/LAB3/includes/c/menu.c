@@ -17,18 +17,23 @@ int menu_addToStart(Person *head){
     char *l_surname = createHeapString();
 
     printf("(LAB3:Create node) Enter year: ");
-    int l_year = atoi(createHeapString());
+    char *l_s_year = createHeapString();
+    int l_year = atoi(l_s_year);
     
-    if(!l_surname || !l_surname || !l_surname){
+    if(!l_name || !l_surname){
         printf("[ERROR] Failed to init data for node creatinon......Exiting\n");
         return -1;
     }
-
 
     if(addNodeAtStart(head, l_name, l_surname, l_year)){
         printf("[ERROR] Failed to create node.....Exiting\n");
         return -2;
     }
+
+
+    free(l_name);
+    free(l_surname);
+    free(l_s_year);
 
     return 0;     
 }
@@ -46,9 +51,10 @@ int menu_addToEnd(Person *head){
     char *l_surname = createHeapString();
 
     printf("(LAB3:Create node) Enter year: ");
-    int l_year = atoi(createHeapString());
+    char *l_s_year = createHeapString();
+    int l_year = atoi(l_s_year);
     
-    if(!l_surname || !l_surname || !l_surname){
+    if(!l_name || !l_surname){
         printf("[ERROR] Failed to init data for node creatinon......Exiting\n");
         return -1;
     }
@@ -58,6 +64,10 @@ int menu_addToEnd(Person *head){
         printf("[ERROR] Failed to create node.....Exiting\n");
         return -2;
     }
+
+    free(l_name);
+    free(l_surname);
+    free(l_s_year);
 
     return 0;     
 }
@@ -77,18 +87,22 @@ int menu_addBeforeSurname(Person *head){
     char *l_surname = createHeapString();
 
     printf("(LAB3:Create node) Enter year: ");
-    int l_year = atoi(createHeapString());
+    char *l_s_year = createHeapString();
+    int l_year = atoi(l_s_year);
     
-    if(!l_surname || !l_surname || !l_surname){
+    if(!l_name || !l_surname){
         printf("[ERROR] Failed to init data for node creatinon......Exiting\n");
         return -1;
     }
-
 
     if(addBeforeSurname(&head, l_f_surname,l_name, l_surname, l_year)){
         printf("[ERROR] Failed to create node.....Exiting\n");
         return -2;
     }
+
+    free(l_name);
+    free(l_surname);
+    free(l_s_year);
 
     return 0;     
 }
@@ -109,9 +123,10 @@ int menu_addAfterSurname(Person *head){
     char *l_surname = createHeapString();
 
     printf("(LAB3:Create node) Enter year: ");
-    int l_year = atoi(createHeapString());
+    char *l_s_year = createHeapString();
+    int l_year = atoi(l_s_year);
     
-    if(!l_f_surname || !l_surname || !l_surname || !l_surname){
+    if(!l_f_surname || !l_name || !l_surname){
         printf("[ERROR] Failed to init data for node creatinon......Exiting\n");
         return -1;
     }
@@ -121,6 +136,10 @@ int menu_addAfterSurname(Person *head){
         printf("[ERROR] Failed to create node.....Exiting\n");
         return -2;
     }
+
+    free(l_name);
+    free(l_surname);
+    free(l_s_year);
 
     return 0;     
 }
@@ -145,6 +164,9 @@ int menu_deleteBySurname(Person* head){
         return -2;
     }
 
+
+    free(l_f_surname);
+
     return 0;
 }
 
@@ -165,6 +187,8 @@ int menu_findElement(Person *head){
         printf("[ERROR] Failed to find wanted node by surname\n");
         return -2;
     }
+
+    free(l_f_surname);
 
     return 0;
 }
@@ -210,7 +234,9 @@ int runMenu(){
         }
         int n_option = atoi(c_option);
         if(n_option == 10){
-            return 0;
+            free(c_option);
+            cleanMemory(head);
+            return state;
         }
         switch(n_option){
             case 1:
@@ -249,7 +275,11 @@ int runMenu(){
                 break;
         }
 
+
+        free(c_option);
     }
+
+    cleanMemory(head);
 
     return state;
 }
