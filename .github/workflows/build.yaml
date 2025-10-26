@@ -34,7 +34,7 @@ jobs:
 
     - name: Build all
       run: |
-        cd LAb/build
+        cd LAB/build
         cmake --build . -- -j$(nproc)
 
     - name: List outputs
