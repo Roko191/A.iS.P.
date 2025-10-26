@@ -1,0 +1,19 @@
+Funckije koje bi trebalo implemenitrat:
+	
+	-> KREIRANJE, UNOS, ISPIS MATRICE
+	createMatrix(); ==> dinammicno alociranje
+	printMatrix();
+	fillMatrix();
+
+	-> KREIRANJE, UNOS, ISPIS NIZA
+	createArray();
+	printArray();
+	inputArray();
+
+	-> KREIRANJE, UNOS STRINGA
+		-> *NOTE: * Ispis nepotreban printf("%s", string)
+
+	createHeapString(); Size is going to  be based on input
+
+	-> BONUS:
+		-> Napravi funkcije da u isto vrijeme unesemo i kreiramo
