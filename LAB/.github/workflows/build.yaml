@@ -1,0 +1,42 @@
+#
+# Buildaj pri svakom commitu na main
+# sve labove uz cmake da vidimo da je sve
+# ok 
+# TODO (maybe): napraviti i da testove pokrene da vidimo jel radi programi
+#
+name: Build AiSP Labs
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake
+
+    - name: Configure CMake
+      run: |
+        mkdir -p build
+        cd build
+        cmake ..
+
+    - name: Build all
+      run: |
+        cd build
+        cmake --build . -- -j$(nproc)
+
+    - name: List outputs
+      run: |
+        echo "LAB outputs:"
+        find ./ -type f -path "*/out/program" -o -path "*/lib/src/out/libLabUtils.so"
