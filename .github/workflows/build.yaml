@@ -27,6 +27,7 @@ jobs:
 
     - name: Configure CMake
       run: |
+        cd LAB
         mkdir -p build
         cd build
         cmake ..
