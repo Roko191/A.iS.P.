@@ -154,6 +154,30 @@ includes/c/LAB3.c.s:
 	cd /home/roko/Code/ALGORITMI_I_STRUKTURE_PODATAKA/LAB && $(MAKE) $(MAKESILENT) -f LAB3/CMakeFiles/LAB3.dir/build.make LAB3/CMakeFiles/LAB3.dir/includes/c/LAB3.c.s
 .PHONY : includes/c/LAB3.c.s
 
+includes/c/menu.o: includes/c/menu.c.o
+.PHONY : includes/c/menu.o
+
+# target to build an object file
+includes/c/menu.c.o:
+	cd /home/roko/Code/ALGORITMI_I_STRUKTURE_PODATAKA/LAB && $(MAKE) $(MAKESILENT) -f LAB3/CMakeFiles/LAB3.dir/build.make LAB3/CMakeFiles/LAB3.dir/includes/c/menu.c.o
+.PHONY : includes/c/menu.c.o
+
+includes/c/menu.i: includes/c/menu.c.i
+.PHONY : includes/c/menu.i
+
+# target to preprocess a source file
+includes/c/menu.c.i:
+	cd /home/roko/Code/ALGORITMI_I_STRUKTURE_PODATAKA/LAB && $(MAKE) $(MAKESILENT) -f LAB3/CMakeFiles/LAB3.dir/build.make LAB3/CMakeFiles/LAB3.dir/includes/c/menu.c.i
+.PHONY : includes/c/menu.c.i
+
+includes/c/menu.s: includes/c/menu.c.s
+.PHONY : includes/c/menu.s
+
+# target to generate assembly for a file
+includes/c/menu.c.s:
+	cd /home/roko/Code/ALGORITMI_I_STRUKTURE_PODATAKA/LAB && $(MAKE) $(MAKESILENT) -f LAB3/CMakeFiles/LAB3.dir/build.make LAB3/CMakeFiles/LAB3.dir/includes/c/menu.c.s
+.PHONY : includes/c/menu.c.s
+
 includes/c/test.o: includes/c/test.c.o
 .PHONY : includes/c/test.o
 
@@ -214,6 +238,9 @@ help:
 	@echo "... includes/c/LAB3.o"
 	@echo "... includes/c/LAB3.i"
 	@echo "... includes/c/LAB3.s"
+	@echo "... includes/c/menu.o"
+	@echo "... includes/c/menu.i"
+	@echo "... includes/c/menu.s"
 	@echo "... includes/c/test.o"
 	@echo "... includes/c/test.i"
 	@echo "... includes/c/test.s"

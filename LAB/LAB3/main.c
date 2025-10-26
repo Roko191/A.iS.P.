@@ -4,6 +4,7 @@
 
 #include "./includes/LAB3.h"
 #include "./includes/test.h"
+#include "./includes/menu.h"
 
 int main(int argc, char **argv){
     int statusCode = 0;
@@ -26,6 +27,11 @@ int main(int argc, char **argv){
     }
     else{
         for(int i = 0; i < argc; i++){
+            if(!strcmp(argv[i], "-m")){
+                printf("[INFO] Menu mode seleted\n");
+                return runMenu();
+            }
+            
             if(!strcmp(argv[i], "-t")){
                 if(i+1>=argc){
                     printf("[INFO] Nema definiranog broja pokreni sve\n");
