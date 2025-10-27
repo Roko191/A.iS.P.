@@ -239,7 +239,7 @@ int multiplyListPolinom(Node** rList, Node* list1, Node* list2){
 void cleanMemory(Node* head){
     Node* toClean;
     
-    if(head -> next != NULL){
+    if(head -> next == NULL){
         return;
     }
 

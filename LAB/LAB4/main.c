@@ -64,6 +64,7 @@ int main(int argc, char **argv){
     printf("--- LAB 4 ---\n");
     
     Node* list = NULL; Node* list2 = NULL; Node* r_list = NULL;
+    FILE* f_list; FILE* f_list2;
 
     // Jako ruzan arg handler al radi
     if(argc <= 1){
@@ -83,7 +84,6 @@ int main(int argc, char **argv){
                         int testNum = atoi(argv[i+1]);
                         switch (testNum){
                             case 1: {
-                                FILE* f_list;
 
                                 if(alloc_test1(&r_list, &f_list)){
                                     printf("[ERROR] Failed allocating data for Test 1....Exiting\n");
@@ -94,7 +94,6 @@ int main(int argc, char **argv){
                                 break;
                             }
                             case 2: {
-                                FILE* f_list; FILE* f_list2;
 
                                 if(alloc_test23(&list, &list2,&f_list, &f_list2)){
                                     printf("[ERROR] Failed allocating data for Test 2....Exiting\n");
@@ -104,7 +103,6 @@ int main(int argc, char **argv){
                                 break;
                             }
                             case 3: {
-                                FILE* f_list; FILE* f_list2;
 
                                 if(alloc_test23(&list, &list2,&f_list, &f_list2)){
                                     printf("[ERROR] Failed allocating data for Test 3....Exiting\n");
@@ -128,4 +126,13 @@ int main(int argc, char **argv){
             }
         }
     }
+
+    if(list) cleanMemory(list);
+    if(list2) cleanMemory(list2);
+    if(r_list) cleanMemory(r_list);
+
+    if(f_list) fclose(f_list);
+    if(f_list2) fclose(f_list2);
+
+    return 0;
 }
