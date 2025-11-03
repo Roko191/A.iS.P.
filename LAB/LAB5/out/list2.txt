@@ -1,0 +1,10 @@
+# Prvi broj predstvalja exponent
+# Drugi broj predstvlja broj koji stoji uz x
+# NAPOMENA: Moguce je definiranje samo jedne liste po fajlu
+# Autor: Roko 27.11.2025
+2
+3
+4
+7
+8
+9
