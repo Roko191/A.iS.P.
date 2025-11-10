@@ -13,4 +13,4 @@ target_include_directories(${LAB_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/includes/c
 )
 
-#target_link_libraries(${LAB_NAME} PRIVATE LabUtils)
+target_link_libraries(${LAB_NAME} PRIVATE LabUtils)
