@@ -10,6 +10,9 @@ typedef struct Node {
 
 
 uint32_t genSeed(int verbose, int debug);
-int push(Node* p_head, int verbose);
+int push(Node* stack, int verbose);
 int printList(const Node* head);
-int pop(Node* p_head);
+int pop(Node* stack);
+int enqueue(Node* queue, int verbose);
+int dequeue(Node* queue);
+int cleanMemory(Node* head);

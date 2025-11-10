@@ -63,6 +63,7 @@ int createNode(Node** p_node, int verbose){
     int num = rand() % (100 - 10 + 1) + 10;
     if(verbose) printf("Rand num: %d\n", num);
     tmp -> el = num;
+    tmp -> next = NULL;
 
     *p_node = tmp;
 
@@ -74,19 +75,39 @@ int push(Node* p_head, int p_verbose){
     if(!p_head){
         return -1;
     }
+
+    Node* newNode;
+    if(createNode(&newNode, p_verbose)){
+        return -2;
+    }
+
+    if(p_head -> next != NULL){
+        newNode -> next = p_head -> next;
+    }
+
+    p_head -> next = newNode;
+
+    return 0;
+}
+
+
+int enqueue(Node* p_queue, int p_verbose){
+    if(!p_queue){
+        return -1;
+    }
  
 
-    if(p_head -> next == NULL){
+    if(p_queue -> next == NULL){
         Node* newNode;
         if(createNode(&newNode, p_verbose)){
             return -2;
         }
 
-        p_head -> next = newNode;
+        p_queue -> next = newNode;
         return 0;
     }
 
-    Node* curr = p_head -> next;    
+    Node* curr = p_queue -> next;    
     while(curr->next != NULL){
         curr = curr-> next;
     }
@@ -116,4 +137,24 @@ int deleteFirst(Node* p_head){
 
 int pop(Node* p_head){
     return deleteFirst(p_head);
+}
+
+int dequeue(Node* p_queue){
+    return deleteFirst(p_queue);
+}
+
+int cleanMemory(Node* head){
+    Node* toClean;
+    
+    if(head -> next == NULL){
+        return -1;
+    }
+
+    while(head != NULL){
+        toClean = head;
+        head = head ->next;
+        free(toClean);
+    }
+
+    return 0;
 }
