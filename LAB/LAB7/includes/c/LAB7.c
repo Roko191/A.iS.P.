@@ -95,7 +95,7 @@ int pq_createNode(pq_Node** p_node, int verbose){
     }
 
     int num = rand() % (100 - 10 + 1) + 10;
-    int p =  rand() %  10;
+    int p =  rand() %  5 + 1;
     if(verbose) printf("Rand num: %d\n", num);
     if(verbose) printf("Priority: %d\n", p);
     tmp -> el = num;
@@ -200,6 +200,8 @@ int pq_enqueue(pq_Node* p_queue, int p_verbose){
     // umetanje
     newNode->next = curr;
     prev->next = newNode;
+
+    return 0;
 
 }
 
