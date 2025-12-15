@@ -5,6 +5,8 @@
 
 #include "../LAB8.h"
 
+int cleanMemory(Node* list);
+
 FILE* getFile(const char* path){
     if(!path){
         return NULL;
@@ -165,7 +167,12 @@ float postfix(const char* pf_e, size_t size){
         word = strtok_r(NULL, " \n", &saveptr);
     }
 
-    return stack -> next -> el;
+    float res = stack -> next -> el;
+
+    cleanMemory(stack);
+    free(cpy_pf_e);
+
+    return res;
 }
 
 
@@ -196,6 +203,22 @@ int readFileAndCalculate(FILE* file){
     }
     
     free(line);
+
+    return 0;
+}
+
+int cleanMemory(Node* list){
+    Node* toClean;
+    
+    if(list -> next == NULL){
+        return -1;
+    }
+
+    while(list != NULL){
+        toClean = list;
+        list = list ->next;
+        free(toClean);
+    }
 
     return 0;
 }
