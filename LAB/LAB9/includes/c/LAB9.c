@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <time.h>
+#include <string.h>
 
 #include "../LAB9.h"
 
@@ -39,4 +40,57 @@ uint64_t now_ms(){
     struct timespec vrime;
     clock_gettime(CLOCK_MONOTONIC_RAW, &vrime);
     return (uint64_t)vrime.tv_sec * 1000LL + (uint64_t)vrime.tv_nsec / 1000000;
+}
+
+int createArrayWithRandomNums(int count, int32_t_v** vector){
+    int32_t_v* tmpVector = malloc(sizeof(int32_t_v));
+    if (!tmpVector) {
+        return 2;
+    }
+    tmpVector->nums = malloc(count * sizeof(int32_t));
+    if(!tmpVector->nums){
+        return 1;
+    }
+    tmpVector->capacity = count;
+    tmpVector->size = count;
+
+    for(int i = 0; i < count; i++){
+        tmpVector->nums[i] = rand() % 1001;
+    }
+
+    *vector = tmpVector;
+
+    return 0;
+}
+
+int int32_t_v_copy(int32_t_v* dst, const int32_t_v* src)
+{
+    if (!dst || !src)
+        return -1;
+
+    dst->nums = malloc(src->capacity * sizeof(int32_t));
+    if (!dst->nums)
+        return -1;
+
+    memcpy(dst->nums, src->nums, src->size * sizeof(int32_t));
+
+    dst->size = src->size;
+    dst->capacity = src->capacity;
+
+    return 0;
+}
+
+
+void printArray(const int32_t_v* vector){
+    if(!vector) return;
+    
+    printf("[");
+    for(int i=0; i < vector->size; i++){
+        if(i == vector-> size - 1){
+            printf("%d", vector->nums[i]);
+            break;
+        }
+        printf("%d, ", vector->nums[i]);
+    }
+    printf("]\n");
 }
